@@ -8,6 +8,8 @@ public class Main {
         System.out.println(Factorial(0));
         System.out.println(ReverseNumber(117));
         System.out.println(ReverseNumberAlt(117));
+        int arr[] = {5, 2, 9, 4};
+        AscendingOrder(arr);
     }
 
     public static String ReverseString(String text) {
@@ -67,12 +69,28 @@ public class Main {
         return a;
     }
 
-    public static int ReverseNumberAlt(int n){
-        String str=String.valueOf(n);
-        String reverseNum="";
-        for (int i = str.length()-1; i >= 0; i--) {
-            reverseNum+=str.charAt(i);
+    public static int ReverseNumberAlt(int n) {
+        String str = String.valueOf(n);
+        String reverseNum = "";
+        for (int i = str.length() - 1; i >= 0; i--) {
+            reverseNum += str.charAt(i);
         }
         return Integer.parseInt(reverseNum);
+    }
+
+    public static void AscendingOrder(int[] arr) {
+        int temp;
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = i + 1; j < arr.length; j++) {
+                if (arr[i] > arr[j]) {
+                    temp = arr[i];
+                    arr[i] = arr[j];
+                    arr[j] = temp;
+                }
+            }
+        }
+        for (int i = 0; i < arr.length; i++) {
+            System.out.print(arr[i] + " ");
+        }
     }
 }
