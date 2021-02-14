@@ -7,7 +7,8 @@ public class Main {
     public static void main(String[] args) throws UnknownHostException {
         System.out.println(InetAddress.getLocalHost());
         FizzBuzz(5, 10);
-        System.out.println(IsEverywhere(new int[]{1,2,1,3,1},1));
+        System.out.println(IsEverywhere(new int[]{1, 2, 1, 3, 1}, 1));
+        System.out.println(hasThree(new int []{1,3,4,3,3,6}));
     }
 
     /* Given start and end numbers, return a new array containing the sequence of
@@ -25,17 +26,38 @@ public class Main {
         }
         System.out.println();
     }
-/*
-We'll say that a value is "everywhere" in an array if for every pair of adjacent elements in the array,
-at least one of the pair is that value. Return true if the given value is everywhere in the array.
-isEverywhere([1, 2, 1, 3], 1) → true
-isEverywhere([1, 2, 1, 3], 2) → false
-isEverywhere([1, 2, 1, 3, 4], 1) → false
- */
-    public static boolean IsEverywhere(int [] nums, int val){
-        for (int i = 0; i < nums.length-1; i++) {
-        if (nums[i]!=val&&nums[i+1]!=val)
-            return false;
+
+    /*
+    We'll say that a value is "everywhere" in an array if for every pair of adjacent elements in the array,
+    at least one of the pair is that value. Return true if the given value is everywhere in the array.
+    isEverywhere([1, 2, 1, 3], 1) → true
+    isEverywhere([1, 2, 1, 3], 2) → false
+    isEverywhere([1, 2, 1, 3, 4], 1) → false
+     */
+    public static boolean IsEverywhere(int[] nums, int val) {
+        for (int i = 0; i < nums.length - 1; i++) {
+            if (nums[i] != val && nums[i + 1] != val)
+                return false;
+        }
+        return true;
+    }
+    /*
+
+Given an array of ints, return true if the value 3 appears in the array
+ exactly 3 times, and no 3's are next to each other.
+haveThree([3, 1, 3, 1, 3]) → true
+haveThree([3, 1, 3, 3]) → false
+haveThree([3, 4, 3, 3, 4]) → false
+     */
+    public static boolean hasThree(int []arr){
+        int count=0;
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i]==3)
+                count++;
+        }
+        for (int i = 0; i < arr.length-1; i++) {
+            if (arr[i]==3&&arr[i+1]==3||count!=3)
+                return false;
         }
         return true;
     }
