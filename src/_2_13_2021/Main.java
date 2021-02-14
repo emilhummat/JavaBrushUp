@@ -8,7 +8,8 @@ public class Main {
         System.out.println(InetAddress.getLocalHost());
         FizzBuzz(5, 10);
         System.out.println(IsEverywhere(new int[]{1, 2, 1, 3, 1}, 1));
-        System.out.println(hasThree(new int []{1,3,4,3,3,6}));
+        System.out.println(hasThree(new int[]{1, 3, 4, 3, 3, 6}));
+        preFour(new int[]{1, 3, 5, 4, 2, 4});
     }
 
     /* Given start and end numbers, return a new array containing the sequence of
@@ -41,6 +42,7 @@ public class Main {
         }
         return true;
     }
+
     /*
 
 Given an array of ints, return true if the value 3 appears in the array
@@ -49,16 +51,39 @@ haveThree([3, 1, 3, 1, 3]) → true
 haveThree([3, 1, 3, 3]) → false
 haveThree([3, 4, 3, 3, 4]) → false
      */
-    public static boolean hasThree(int []arr){
-        int count=0;
+    public static boolean hasThree(int[] arr) {
+        int count = 0;
         for (int i = 0; i < arr.length; i++) {
-            if (arr[i]==3)
+            if (arr[i] == 3)
                 count++;
         }
-        for (int i = 0; i < arr.length-1; i++) {
-            if (arr[i]==3&&arr[i+1]==3||count!=3)
+        for (int i = 0; i < arr.length - 1; i++) {
+            if (arr[i] == 3 && arr[i + 1] == 3 || count != 3)
                 return false;
         }
         return true;
+    }
+
+    /*
+
+Given a non-empty array of ints, return a new array containing the elements from the
+original array that come before the first 4 in the original array. The original array
+will contain at least one 4. Note that it is valid in java to create an array of length 0.
+pre4([1, 2, 4, 1]) → [1, 2]
+pre4([3, 1, 4]) → [3, 1]
+pre4([1, 4, 4]) → [1]
+     */
+    public static void preFour(int[] arr) {
+        int count = 0;
+        while (arr[count]!=4)
+                count++;
+        int[] newArr = new int[count];
+        for (int i = 0; i < newArr.length; i++) {
+            newArr[i] = arr[i];
+        }
+        for (int i = 0; i < newArr.length; i++) {
+            System.out.print(newArr[i] + " ");
+        }
+
     }
 }
