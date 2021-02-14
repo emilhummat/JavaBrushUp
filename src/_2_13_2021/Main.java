@@ -10,6 +10,7 @@ public class Main {
         System.out.println(IsEverywhere(new int[]{1, 2, 1, 3, 1}, 1));
         System.out.println(hasThree(new int[]{1, 3, 4, 3, 3, 6}));
         preFour(new int[]{1, 3, 5, 4, 2, 4});
+        notAlone(new int[]{1,2,3,2,5,2},2 );
     }
 
     /* Given start and end numbers, return a new array containing the sequence of
@@ -84,6 +85,25 @@ pre4([1, 4, 4]) → [1]
         for (int i = 0; i < newArr.length; i++) {
             System.out.print(newArr[i] + " ");
         }
+        System.out.println();
 
+    }
+/*
+We'll say that an element in an array is "alone" if there are values before and after it,
+and those values are different from it. Return a version of the given array where every
+instance of the given value which is alone is replaced by whichever value to its left or right is larger.
+notAlone([1, 2, 3], 2) → [1, 3, 3]
+notAlone([1, 2, 3, 2, 5, 2], 2) → [1, 3, 3, 5, 5, 2]
+notAlone([3, 4], 3) → [3, 4]
+ */
+
+    public static void notAlone(int[] nums, int val) {
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i]==val&&i!=0&&i!=nums.length-1&&nums[i]!=nums[i-1]&&nums[i]!=nums[i+1])
+               nums[i]=Math.max(nums[i-1],nums[i+1]);
+        }
+        for (int i = 0; i < nums.length; i++) {
+            System.out.print(nums[i]+" ");
+        }
     }
 }
