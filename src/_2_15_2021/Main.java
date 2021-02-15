@@ -2,7 +2,7 @@ package _2_15_2021;
 
 public class Main {
     public static void main(String[] args) {
-withoutTen(new int []{2,10,10,10,3,10});
+withoutTen(new int []{2,10,4,10,10,3,10});
     }
     /*
     Return a version of the given array where all the 10's have been removed. The remaining
@@ -21,7 +21,7 @@ withoutTen([1, 99, 10]) → [1, 99, 0]
             if (arr[j]!=10){
                 arr[i]=arr[j];
                 arr[j]=10;
-
+                i++;
             }
         }
         for (int i1 = 0; i1 <arr.length ; i1++) {
