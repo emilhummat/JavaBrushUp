@@ -19,11 +19,18 @@ topping2({"spinach": "dirt", "ice cream": "cherry"}) → {"yogurt": "cherry", "s
 topping2({"yogurt": "salt"}) → {"yogurt": "salt"}
      */
     public static Map<String, String> topping(Map<String, String> map) {
-        for (String s : map.keySet()) {
-            if (s=="ice cream")
-                map.put("yogurt",map.get("ice cream"));
-            if (s=="spinach")
-                map.replace("spinach","nuts");
+//        for (String s : map.keySet()) {
+//            if (s=="ice cream")
+//                map.put("yogurt",map.get("ice cream"));
+//            if (s=="spinach")
+//                map.replace("spinach","nuts");
+//        }
+//        return map;
+        if(map.containsKey("ice cream")) {
+            map.put("yogurt",map.get("ice cream"));
+        }
+        if(map.containsKey("spinach")) {
+            map.put("spinach","nuts");
         }
         return map;
 
